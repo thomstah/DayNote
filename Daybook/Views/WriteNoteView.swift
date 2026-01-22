@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct WriteNoteView: View {
-    @Binding var title: String
-    @Binding var text: String
+    @State var title: String
+    @State var text: String
+    let onSave: (String, String) -> Void
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -30,6 +31,7 @@ struct WriteNoteView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
+                    onSave(title, text)
                     dismiss()
                 }
             }
@@ -37,17 +39,14 @@ struct WriteNoteView: View {
     }
 }
 
-struct StatefulePreviewWrapper: View {
-    @State private var title: String = "Sample title"
-    @State private var text: String = "sample body text"
-    
-    var body: some View {
-        NavigationStack {
-            WriteNoteView(title: $title, text: $text)
-        }
-    }
-}
-
 #Preview {
-    StatefulePreviewWrapper()
+    let sample = DayNote(
+        date: Date(),
+        title: "Sample title",
+        text: "Full text of a sample note for the detail view."
+    )
+    
+    return NavigationStack {
+        NoteDetailView(note: sample)
+    }
 }

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DaybookApp: App {
+    @StateObject private var notesStore = NotesStore()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(notesStore)
         }
     }
 }

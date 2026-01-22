@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct DayNote: Identifiable, Hashable {
+struct DayNote: Identifiable, Hashable, Codable {
     let id: UUID
     let date: Date
-    var title: String? = nil
+    var title: String?
     var text: String
 
     init(

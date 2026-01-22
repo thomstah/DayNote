@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		CBE1A7482F1DF4A40082B622 /* Daybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBE1A7482F1DF4A40082B622 /* Daybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Daybook.app; path = "/Users/thomzillaster/Desktop/Daybook/build/Debug-iphoneos/Daybook.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CBE1A74A2F1DF4A40082B622 /* Daybook */ = {
+		CBE1A7932F1FE6470082B622 /* Daybook */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Daybook;
 			sourceTree = "<group>";
@@ -32,17 +32,8 @@
 		CBE1A73F2F1DF4A30082B622 = {
 			isa = PBXGroup;
 			children = (
-				CBE1A74A2F1DF4A40082B622 /* Daybook */,
-				CBE1A7492F1DF4A40082B622 /* Products */,
+				CBE1A7932F1FE6470082B622 /* Daybook */,
 			);
-			sourceTree = "<group>";
-		};
-		CBE1A7492F1DF4A40082B622 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CBE1A7482F1DF4A40082B622 /* Daybook.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -61,7 +52,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CBE1A74A2F1DF4A40082B622 /* Daybook */,
+				CBE1A7932F1FE6470082B622 /* Daybook */,
 			);
 			name = Daybook;
 			packageProductDependencies = (
@@ -95,7 +86,7 @@
 			mainGroup = CBE1A73F2F1DF4A30082B622;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = CBE1A7492F1DF4A40082B622 /* Products */;
+			productRefGroup = CBE1A73F2F1DF4A30082B622;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
