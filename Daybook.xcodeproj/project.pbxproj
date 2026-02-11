@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		CBE1A7482F1DF4A40082B622 /* Daybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Daybook.app; path = "/Users/thomzillaster/Desktop/Daybook/build/Debug-iphoneos/Daybook.app"; sourceTree = "<absolute>"; };
+		CBE1A7A22F2726AB0082B622 /* Daybook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daybook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				CBE1A7932F1FE6470082B622 /* Daybook */,
+				CBE1A7A22F2726AB0082B622 /* Daybook.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = Daybook;
-			productReference = CBE1A7482F1DF4A40082B622 /* Daybook.app */;
+			productReference = CBE1A7A22F2726AB0082B622 /* Daybook.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

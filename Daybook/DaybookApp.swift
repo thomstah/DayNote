@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct DaybookApp: App {
     @StateObject private var notesStore = NotesStore()
+    @StateObject private var notificationService = NotificationService()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(notesStore)
+                .environmentObject(notificationService)
         }
     }
 }

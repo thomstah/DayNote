@@ -81,6 +81,74 @@ final class NotesStore: ObservableObject {
         }
     }
     
+    // MARK: - Streaks
+    
+    func hasNote(on date: Date) -> Bool {
+        notes.contains { calendar.isDate($0.date, inSameDayAs: date) }
+    }
+    
+    func currentStreak() -> Int {
+        var streak = 0
+        var day = Date()
+        
+        while hasNote(on: day) {
+            streak += 1
+            guard let previous = calendar.date(byAdding: .day, value: -1, to: day)
+            else {
+                break
+            }
+            day = previous
+        }
+        return streak
+    }
+    
+    func longestStreak() -> Int {
+        let uniqueDays = Set(
+            notes.map { calendar.startOfDay(for: $0.date) }
+        ).sorted()
+        
+        guard !uniqueDays.isEmpty else { return 0 }
+        
+        var longest = 1
+        var current = 1
+        
+        for i in 1..<uniqueDays.count {
+            let prev = uniqueDays[i - 1]
+            let currentDay = uniqueDays[i]
+            
+            if let expectedNext = calendar.date(byAdding: .day, value: 1, to: prev),
+               calendar.isDate(expectedNext, inSameDayAs: currentDay) {
+                current += 1
+                longest = max(longest, current)
+            } else {
+                current = 1
+            }
+        }
+        
+        return longest
+    }
+    
+    // MARK: - Grid helpers
+    
+    func recentDays(count: Int) -> [Date] {
+        guard count > 0 else { return [] }
+        var days: [Date] = []
+        var day = calendar.startOfDay(for: Date())
+        
+        for _ in 0..<count {
+            days.append(day)
+            if let previous = calendar.date(byAdding: .day, value: -1, to: day) {
+                day = previous
+            }
+        }
+        return days.reversed()
+    }
+    
+    func hasNote(onExact day: Date) -> Bool {
+        notes.contains { calendar.isDate($0.date, inSameDayAs: day) }
+    }
+    
+    
     
 }
 
