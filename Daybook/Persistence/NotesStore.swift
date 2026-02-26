@@ -25,14 +25,8 @@ final class NotesStore: ObservableObject {
     // mark: - Public API
     
     // get existing note for today, or create one
-    func noteForToday() -> DayNote {
-        if let existing = notes.first(where: { calendar.isDateInToday($0.date) }) {
-            return existing
-        }
-        
-        let new = DayNote(date: Date(), title: nil, text: "")
-        notes.append(new)
-        return new
+    func noteForToday() -> DayNote? {
+        notes.first { calendar.isDateInToday($0.date) }
     }
     
     // update an existing note in the array

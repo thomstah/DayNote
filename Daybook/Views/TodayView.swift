@@ -10,32 +10,48 @@ import SwiftUI
 struct TodayView: View {
     @EnvironmentObject var notesStore: NotesStore
     @State private var todayNote: DayNote?
+    private let promptService = PromptService()
     
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 16) {
-                if let note = todayNote {
-                    Text(note.text.isEmpty ? "No note yet" : "Today's note")
-                        .font(.title2)
-                        .bold()
-                    
-                    if let title = note.title, !title.isEmpty {
-                        Text(title)
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
-                    if !note.text.isEmpty {
-                        Text(note.text)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .cornerRadius(8)
-                    }
-                    
-                    NavigationLink {
+        VStack(spacing: 16) {
+            if let note = todayNote {
+                
+                if let title = note.title, !title.isEmpty {
+                    Text(title)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                if note.text.isEmpty {
+                    //shows prompt when there is a DayNote but no text yet
+                    Text(promptService.promptForToday())
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    Text(note.text)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .cornerRadius(8)
+                }
+                
+                
+            } else {
+                Text("No note for today yet.")
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+        }
+        .padding()
+        .onAppear {
+            todayNote = notesStore.noteForToday()
+        }
+        .navigationTitle("Today")
+        .toolbar {
+            if let note = todayNote {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink{
                         WriteNoteView(
-                            title: note.title ?? "",
-                            text: note.text
+                            title: note.title ?? "", text: note.text
                         ) { newTitle, newText in
                             var updated = note
                             updated.title = newTitle.isEmpty ? nil : newTitle
@@ -44,36 +60,30 @@ struct TodayView: View {
                             notesStore.update(note: updated)
                         }
                     } label: {
-                        Text(note.text.isEmpty ? "Write today's note" : "Edit today's note")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.accentColor)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                        Text(note.text.isEmpty
+                             ? "Write"
+                             : "Edit")
                     }
                 }
-                Spacer()
             }
-            .padding()
-            .onAppear {
-                todayNote = notesStore.noteForToday()
-            }
-            .navigationTitle("Today")
-            
         }
+        
     }
 }
 
-#Preview {
-    let store = NotesStore()
-    store.notes = [
-        DayNote(
-            date: Date(),
-            title: "Preview title",
-            text: "Preview text for today’s note."
-        )
-    ]
+    #Preview {
+        let store = NotesStore()
+        store.notes = [
+            DayNote(
+                date: Date(),
+                title: "Preview title",
+                text: "Preview text for today’s note."
+            )
+        ]
 
-    return TodayView()
-        .environmentObject(store)
-}
+        return NavigationStack {
+            TodayView()
+                .environmentObject(store)
+        }
+    }
+

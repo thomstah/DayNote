@@ -45,11 +45,18 @@ struct HomeView: View {
                     
                     TodayCardView(selectedTab: $selectedTab)
                     
-                    streakWidget
+                    HStack(spacing: 12) {
+                        StreaksCardView()
+                        PromptCardView()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .fixedSize(horizontal: false, vertical: true)
+                    
+                    //streakWidget
                     
                     gridWidget
                 }
-                .padding()
+                .padding(.horizontal)
             }
             .navigationTitle("Home")
         }
@@ -116,7 +123,7 @@ struct HomeView: View {
 
 #Preview {
     let store = NotesStore()
-    let cal = Calendar.current
+    // let cal = Calendar.current
 
     // Fake: 20 days in a row including today, then some gaps
    /* for offset in 0..<90 {

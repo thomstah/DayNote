@@ -11,7 +11,6 @@ enum AppTab: Hashable {
     case home
     case today
     case past
-    case settings
 }
 
 struct ContentView: View {
@@ -19,29 +18,30 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeView(selectedTab: $selectedTab)
+            NavigationStack {
+                HomeView(selectedTab: $selectedTab)
+            }
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
                 .tag(AppTab.home)
             
-            TodayView()
+            NavigationStack {
+                TodayView()
+            }
                 .tabItem {
                     Label("Today", systemImage: "sun.max")
                 }
                 .tag(AppTab.today)
             
-            PastNotesView()
+            NavigationStack {
+                PastNotesView()
+            }
                 .tabItem {
                     Label("History", systemImage: "clock")
                 }
                 .tag(AppTab.past)
             
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                }
-                .tag(AppTab.settings)
         }
     }
 }
