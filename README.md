@@ -26,7 +26,9 @@ A BeReal-inspired daily journaling iOS app built with SwiftUI. Write one note pe
 
 | Home | History |
 |------|---------|
-| ![Home](screenshots/home.png) | ![History](screenshots/history.png) |
+| ![Home](<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-12 at 19 10 12" src="https://github.com/user-attachments/assets/9df0af1c-8c95-4cc7-8628-848497430344" />
+) | ![History](<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-12 at 19 10 03" src="https://github.com/user-attachments/assets/b91d5c7f-6965-4c36-9074-4cf7e7e52070" />
+) |
 
 ## Project Structure
 
