@@ -7,10 +7,8 @@ A BeReal-inspired daily journaling iOS app built with SwiftUI. Write one note pe
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/home.png" width="220" alt="Home" />
-  &nbsp;&nbsp;
-  <img src="screenshots/history.png" width="220" alt="History" />
-</p>
+  <img width="225" alt="Home" src="https://github.com/user-attachments/assets/d027be80-c6ba-40fe-ad55-a069afaf2685" />
+  <img width="225" alt="History" src="https://github.com/user-attachments/assets/73b835a0-98c2-4375-9591-fc76d4ec2e11" /></p>
 
 ---
 
